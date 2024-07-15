@@ -72,7 +72,7 @@ class DatabaseTeam {
   }
   // database created
   Future<Database> _initDatabase() async {
-    String path = join(await getDatabasesPath(), 'team_database_system_3.db');
+    String path = join(await getDatabasesPath(), 'team_database_system_1.db');
     return await openDatabase(
       path,
       version: 1,
@@ -83,7 +83,7 @@ class DatabaseTeam {
   Future _onCreate(Database db, int version) async {
     await db.execute('''
        CREATE TABLE team_members (
-      id INT PRIMARY KEY,
+      id TEXT PRIMARY KEY,
       name TEXT NOT NULL,
       role TEXT NOT NULL,
       gender TEXT NOT NULL,
@@ -105,5 +105,15 @@ class DatabaseTeam {
       return Employee.fromMap(maps[i]);
     });
   }
+  Future<int> deleteTeamMember(String id) async {
+    Database db = await database;
+    return await db.delete(
+      'team_members',
+      where: 'id = ?',
+      whereArgs: [id],
+    );
+  }
 }
+
+
 
