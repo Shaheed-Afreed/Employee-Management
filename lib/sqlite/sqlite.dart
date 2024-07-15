@@ -105,14 +105,7 @@ class DatabaseTeam {
       return Employee.fromMap(maps[i]);
     });
   }
-  Future<int> deleteTeamMember(String id) async {
-    Database db = await database;
-    return await db.delete(
-      'team_members',
-      where: 'id = ?',
-      whereArgs: [id],
-    );
-  }
+ 
 }
 
 
