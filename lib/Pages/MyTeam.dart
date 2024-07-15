@@ -101,22 +101,7 @@ class _MyTeamState extends State<MyTeam> {
 
                     ],
                   ),
-                Spacer(),
-                  Column(
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    crossAxisAlignment: CrossAxisAlignment.end,
 
-                    children: [
-                      ElevatedButton(onPressed:() {
-                        if (employeedetails.id != null) {
-                          deleteTeamMember(employeedetails.id!);
-                        }
-
-
-                      }, child: Text("delete",style:TextStyle(color: Colors.red,fontSize: 16,fontWeight: FontWeight.w400),))
-
-                    ],
-                  )
                 ],
 
               ),
