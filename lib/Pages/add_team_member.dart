@@ -34,7 +34,7 @@ class _AddTeamMemberState extends State<AddTeamMember> {
   // _submit function is used to give the value from the Text field  to instance variable present inside the Employee class through Constructor
   void _submit() async {
     Employee member = Employee(
-      id: id.text,
+
       gender: gender,
       name: _name.text,
       role: _designation.text,
@@ -100,6 +100,7 @@ class _AddTeamMemberState extends State<AddTeamMember> {
 
               ),
               SizedBox(height: 10,),
+
 
               //text for the Name field
               Text("Name of employee",
@@ -240,7 +241,7 @@ class _AddTeamMemberState extends State<AddTeamMember> {
 
                 ),
                   child: TextButton(onPressed: (){
-                    print(id.text);
+
                     print(_name.text);
                     print(_selecteddate.toString());
                     print(_designation.text);
