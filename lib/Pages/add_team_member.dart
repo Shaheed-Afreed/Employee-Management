@@ -11,8 +11,9 @@ class AddTeamMember extends StatefulWidget {
 
 class _AddTeamMemberState extends State<AddTeamMember> {
   //Controller to take the data from Form
- // TextEditingController _id =TextEditingController();
+
   TextEditingController _name=TextEditingController();
+  TextEditingController id=TextEditingController();
   TextEditingController _designation=TextEditingController();
   List<String> _gender=["Male","Female"];
   String? gender;
@@ -33,10 +34,12 @@ class _AddTeamMemberState extends State<AddTeamMember> {
   // _submit function is used to give the value from the Text field  to instance variable present inside the Employee class through Constructor
   void _submit() async {
     Employee member = Employee(
+      id: id.text,
       gender: gender,
       name: _name.text,
       role: _designation.text,
       dateOfBirth: _selecteddate,
+
 
 
     );
@@ -51,8 +54,9 @@ class _AddTeamMemberState extends State<AddTeamMember> {
     return Scaffold(
       backgroundColor: Colors.grey[900],
       appBar: AppBar(
-        title: Text("Add Team",style: TextStyle(color: Colors.black,fontSize: 22,fontWeight: FontWeight.bold),),
-      centerTitle: false,
+        title: Text("Add Team",
+          style: TextStyle(color: Colors.black,fontSize: 22,fontWeight: FontWeight.bold),),
+      centerTitle: true,
       automaticallyImplyLeading: true,
       backgroundColor: Colors.grey,
      // automaticallyImplyLeading: false,
@@ -64,6 +68,39 @@ class _AddTeamMemberState extends State<AddTeamMember> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
+              Text("id of employee",
+                style:TextStyle(color: Colors.white,fontSize: 15),
+              ),
+              SizedBox(height: 10,),
+              TextField(
+                style:TextStyle(
+                  color: Colors.white,
+                  fontSize: 15,
+                  fontWeight: FontWeight.w400,
+                ),
+                controller: id,
+                decoration: InputDecoration(
+                    border: OutlineInputBorder(borderRadius: BorderRadius.circular(10),),
+                    hintText: "enter id",
+                    hintStyle: TextStyle(
+                      color: Colors.white,
+                      fontSize: 12,
+                      fontWeight: FontWeight.w400,
+                    ),
+                    enabledBorder: OutlineInputBorder(
+                      borderSide: BorderSide(color: Colors.white),
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    focusedBorder: OutlineInputBorder(
+                      borderSide: BorderSide(color: Colors.white),
+                      borderRadius: BorderRadius.circular(10),
+                    )
+
+                ),
+
+              ),
+              SizedBox(height: 10,),
+
               //text for the Name field
               Text("Name of employee",
                 style:TextStyle(color: Colors.white,fontSize: 15),
@@ -97,6 +134,7 @@ class _AddTeamMemberState extends State<AddTeamMember> {
                   ),
 
               ) ,
+
               SizedBox(height: 20,),
               // Text of Designation
               Text("Designation",
@@ -202,10 +240,12 @@ class _AddTeamMemberState extends State<AddTeamMember> {
 
                 ),
                   child: TextButton(onPressed: (){
+                    print(id.text);
                     print(_name.text);
                     print(_selecteddate.toString());
                     print(_designation.text);
                     print(gender);
+
                     _submit();
                     Navigator.pop(context);
                   },child: Text("Submit",style: TextStyle(color: Colors.white,fontSize: 20),),),
